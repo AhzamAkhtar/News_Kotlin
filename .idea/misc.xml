@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/News_Kotlin/app/src/main/res/drawable/ic_twotone_delete_24.xml" value="0.2595" />
         <entry key="..\:/Users/ahzam/AndroidStudioProjects/News_Kotlin/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/ahzam/AndroidStudioProjects/News_Kotlin/app/src/main/res/layout/item_news.xml" value="0.14907407407407408" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/News_Kotlin/app/src/main/res/layout/faf_layout.xml" value="0.22407407407407406" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/News_Kotlin/app/src/main/res/layout/item_news.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/ahzam/AndroidStudioProjects/News_Kotlin/app/src/main/res/layout/item_note.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

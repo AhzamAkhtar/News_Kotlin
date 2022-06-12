@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.News_Kotlin">
         <activity
+            android:name=".FavDisplay"
+            android:exported="false"
+            android:label="Fav"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

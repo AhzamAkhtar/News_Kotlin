@@ -10,23 +10,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    
-    <ImageView
-        android:id="@+id/noInternet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/no_internet1"
-        android:layout_marginTop="400dp"/>
+
+        <ImageView
+            android:id="@+id/noInternet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="400dp"
+            android:src="@drawable/no_internet1" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="70dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView2"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="300dp"/>
+
 
 
         <ProgressBar
@@ -37,7 +49,16 @@
             android:layout_marginLeft="190dp"
             android:layout_marginTop="250dp" />
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_marginLeft="210dp"
+            android:onClick="moveTOFav"/>
+
 
     </RelativeLayout>
+
 
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,18 +1,18 @@
 package com.example.android.news_kotlin
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.browser.customtabs.CustomTabsIntent
-import androidx.core.content.PackageManagerCompat.LOG_TAG
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -22,6 +22,9 @@ import com.android.volley.toolbox.JsonObjectRequest
 import java.util.*
 import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity(), NewsItemClicked {
+    //lateinit var  viewModel: NoteViewModel
+    private  val viewModel by viewModels<NoteViewModel>()
+
 
 
     private lateinit var mAdapter: NewsListAdapter
@@ -33,8 +36,14 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
         val listView : RecyclerView = findViewById(R.id.recyclerView)
         listView.layoutManager = LinearLayoutManager(this)
         fetchData()
-        mAdapter = NewsListAdapter(this)
+        mAdapter = NewsListAdapter(this,viewModel)
         listView.adapter = mAdapter
+
+        //viewModel = ViewModelProvider(this,
+            //ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NoteViewModel::class.java)
+
+
+
         val swipeup : SwipeRefreshLayout = findViewById(R.id.swipeup)
         swipeup.setOnRefreshListener {
 
@@ -66,6 +75,7 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
                     newsArray.add(news)
                     Collections.shuffle(newsArray)
                     scroolbar.visibility = View.GONE
+                    //viewModel.insertNote(Note(newsJsonObject.getString("title")))
                 }
 
                 mAdapter.updateNews(newsArray)
@@ -102,5 +112,10 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
 
             }
         }
+    }
+
+    fun moveTOFav(view: View) {
+        val intent = Intent(this,FavDisplay::class.java)
+        startActivity(intent)
     }
 }
