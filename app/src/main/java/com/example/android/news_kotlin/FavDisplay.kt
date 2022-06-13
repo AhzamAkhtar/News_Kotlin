@@ -22,7 +22,6 @@ class FavDisplay: AppCompatActivity(), INOtesRVAdapter {
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)).get(NoteViewModel::class.java)
 
 
-        viewModel.insertNote(Note("hello"))
 
 
 

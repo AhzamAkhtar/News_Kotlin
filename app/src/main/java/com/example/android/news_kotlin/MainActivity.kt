@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.widget.Toolbar
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,19 +25,19 @@ import kotlin.collections.ArrayList
 class MainActivity : AppCompatActivity(), NewsItemClicked {
     //lateinit var  viewModel: NoteViewModel
     private  val viewModel by viewModels<NoteViewModel>()
-
-
-
     private lateinit var mAdapter: NewsListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val toolbar : Toolbar = findViewById(R.id.custombar)
+        setSupportActionBar(toolbar)
+
         val listView : RecyclerView = findViewById(R.id.recyclerView)
         listView.layoutManager = LinearLayoutManager(this)
         fetchData()
-        mAdapter = NewsListAdapter(this,viewModel)
+        mAdapter = NewsListAdapter(this,viewModel,this)
         listView.adapter = mAdapter
 
         //viewModel = ViewModelProvider(this,
