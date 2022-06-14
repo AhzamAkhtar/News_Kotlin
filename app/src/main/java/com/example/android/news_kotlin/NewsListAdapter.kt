@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModelProvider
@@ -56,18 +57,35 @@ class NewsListAdapter(private val listener: NewsItemClicked, val viewModel: Note
            viewModel.insertNote(Note(currentItem.title))
        }
         holder.delbutton.setOnClickListener{
-            items.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position,items.size)
-            val snackbar = Snackbar.make(it,"Item Deleted",Snackbar.LENGTH_LONG)
-            snackbar.setAction("UNDO",View.OnClickListener {
-                Log.d("UNdoNew","undonew")
-                items.add(position,temp)
-                notifyItemInserted(position)
+
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Delete")
+            builder.setMessage("Are You Sure")
+            builder.setIcon(R.drawable.ic_round_delete_24)
+
+            builder.setPositiveButton("Yes"){dialogInterface,which ->
+                items.removeAt(position)
+                notifyItemRemoved(position)
                 notifyItemRangeChanged(position,items.size)
-                val snackbar = Snackbar.make(it,"Item Added",Snackbar.LENGTH_LONG).show()
-            })
-            snackbar.show()
+                val snackbar = Snackbar.make(it,"Item Deleted",Snackbar.LENGTH_LONG)
+                snackbar.setAction("UNDO",View.OnClickListener {
+                    Log.d("UNdoNew","undonew")
+                    items.add(position,temp)
+                    notifyItemInserted(position)
+                    notifyItemRangeChanged(position,items.size)
+                    val snackbar = Snackbar.make(it,"Item Added",Snackbar.LENGTH_LONG).show()
+                })
+                snackbar.show()
+            }
+
+            builder.setNegativeButton("No"){dialogInterface,which ->
+                val snackbar = Snackbar.make(it,"Deletion Cancel",Snackbar.LENGTH_LONG).show()
+            }
+
+            val alertDialog:AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+
         }
         holder.sharebutton.setOnClickListener{
            val sendIntent : Intent = Intent().apply {

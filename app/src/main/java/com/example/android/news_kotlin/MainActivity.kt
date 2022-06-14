@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +34,11 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
 
         val toolbar : Toolbar = findViewById(R.id.custombar)
         setSupportActionBar(toolbar)
+
+        val ActionBar : ActionBar? = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setHomeAsUpIndicator(R.drawable.ic_baseline_format_align_left_24)
+
 
         val listView : RecyclerView = findViewById(R.id.recyclerView)
         listView.layoutManager = LinearLayoutManager(this)
