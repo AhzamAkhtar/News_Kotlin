@@ -23,7 +23,8 @@ class NewsListAdapter(private val listener: NewsItemClicked, val viewModel: Note
     private val items: ArrayList<News> = ArrayList()
     //val model = ViewModelProvider(Context)[]
      //lateinit var  viewModel: NoteViewModel
-     //val  position_del
+     //val
+    // adapter
 
 
 
