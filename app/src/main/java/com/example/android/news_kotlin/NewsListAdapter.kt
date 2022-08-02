@@ -25,6 +25,7 @@ class NewsListAdapter(private val listener: NewsItemClicked, val viewModel: Note
      //lateinit var  viewModel: NoteViewModel
      //val
     // adapter
+    // adapter new
 
 
 
